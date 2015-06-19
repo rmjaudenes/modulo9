@@ -4,7 +4,7 @@ var router = express.Router();
 
 //importar el enrutador
 var quizController = require('../controllers/quiz_controller');
-
+var authorController= require ('../controllers/author_controller');
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('index', { title: 'Quiz' });
@@ -14,6 +14,7 @@ router.get('/', function(req, res) {
 //llevan a ejecutar las acciones referiadas a question y answer
 router.get('/quizes/question', quizController.question);
 router.get('/quizes/answer',   quizController.answer);
+router.get('/author',   authorController.author);
 
 
 module.exports = router;

@@ -6,7 +6,7 @@ body {
   
 }
 
-#page-wrap: after
+#page-wrap:after
 {
 content: "Wide Layout";
  }
@@ -22,9 +22,9 @@ nav span {
 
 section 
 {
-  float:rigth;
+  float:right;
   width: 80%;
-  heigth: 200px;
+  height: 200px;
   
 }
   
