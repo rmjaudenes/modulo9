@@ -65,11 +65,14 @@ sequelize.sync().then(function() {
     //quiz.count dice el numero de filas que hay en la tabla
    Quiz.count().then(function (count){
     if(count === 0) { 
-            
-        Quiz.create({ pregunta: 'Cuál es la capital de Italia',
-      	            respuesta: 'Roma'
-      	         })
-      .then(function(){console.log('Base de datos inicializada')});
+       
+       Quiz.bulkCreate( 
+        [ {pregunta: 'Cuál es la capital de Italia',   respuesta: 'Roma'},
+          {pregunta: 'Cuál es la capital de Portugal', respuesta: 'Lisboa'}
+        ]
+      ).then(function(){console.log('Base de datos inicializada')});
+       
+       
     };
   });
 });

@@ -12,8 +12,10 @@ router.get('/', function(req, res) {
 
 //el enrutador es esta pagina, index.js, ha de importar el controlador
 //llevan a ejecutar las acciones referiadas a question y answer
-router.get('/quizes/question', quizController.question);
-router.get('/quizes/answer',   quizController.answer);
+//definicion de rutas de /quizes
+router.get('/quizes', quizController.index);
+router.get('/quizes/:quizId(\\d+)', quizController.show);
+router.get('/quizes/:quizId(\\d+)/answer',   quizController.answer);
 router.get('/author',   authorController.author);
 
 
