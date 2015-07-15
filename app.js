@@ -11,6 +11,8 @@ importamos el paquete ene l fichero
 var partials = require ('express-partials');
 
 
+var methodOverride= require ('method-override');
+
 var routes = require('./routes/index');
 //lo elimino poneindo comentarios var users = require('./routes/users');
 
@@ -34,6 +36,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
+app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
