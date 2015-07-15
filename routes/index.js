@@ -7,7 +7,7 @@ var quizController = require('../controllers/quiz_controller');
 var authorController= require ('../controllers/author_controller');
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Quiz' });
+  res.render('index', { title: 'Quiz' , errors: []});
 });
 
 //autoload de comandos con :quizId
