@@ -18,6 +18,7 @@ router.param('quizId', quizController.load);
 //el enrutador es esta pagina, index.js, ha de importar el controlador
 //llevan a ejecutar las acciones referiadas a question y answer
 //definicion de rutas de /quizes
+// Definición de rutas de /quizes
 router.get('/quizes',                      quizController.index);
 router.get('/quizes/:quizId(\\d+)',        quizController.show);
 router.get('/quizes/:quizId(\\d+)/answer', quizController.answer);
@@ -25,6 +26,7 @@ router.get('/quizes/new',                  quizController.new);
 router.post('/quizes/create',              quizController.create);
 router.get('/quizes/:quizId(\\d+)/edit',   quizController.edit);
 router.put('/quizes/:quizId(\\d+)',        quizController.update);
+router.delete('/quizes/:quizId(\\d+)',     quizController.destroy);
 
 router.get('/author',   authorController.author);
 
