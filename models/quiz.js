@@ -7,18 +7,25 @@
 //y los objetos
 //el nombre de la tabla en mayúscula Quiz
 //poqrue es un constructor de objetos
+
+// Definicion del modelo de Quiz con validación
+
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Quiz',
-            { pregunta:  {
-            type: DataTypes.STRING,
-            validate: {notEmpty: {msg: "-> Falta Pregunta"}}
-            },
-              respuesta: {
-                type: DataTypes.STRING,
-                validate: {notEmpty: {msg: "-> Falta Respuesta"}}
-              }
-            }
-            );
+  return sequelize.define(
+  	'Quiz',
+    { pregunta: {
+        type: DataTypes.STRING,
+        validate: { notEmpty: {msg: "-> Falta Pregunta"}}
+      },
+      respuesta: {
+        type: DataTypes.STRING,
+        validate: { notEmpty: {msg: "-> Falta Respuesta"}}
+      }
+    }
+  );
 }
+
+
+
     //son dos campos tipo string, pregunta y respuesta
 
