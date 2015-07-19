@@ -67,8 +67,8 @@ sequelize.sync().then(function() {
     if(count === 0) { 
        
        Quiz.bulkCreate( 
-        [ {pregunta: 'Cuál es la capital de Italia',   respuesta: 'Roma'},
-          {pregunta: 'Cuál es la capital de Portugal', respuesta: 'Lisboa'}
+        [ {pregunta: 'Cuál es la capital de Italia',   respuesta: 'Roma', tema: 'Humanidades'},
+          {pregunta: 'Cuál es la capital de Portugal', respuesta: 'Lisboa', tema: 'Humanidades'}
         ]
       ).then(function(){console.log('Base de datos inicializada')});
        
