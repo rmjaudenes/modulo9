@@ -4,6 +4,8 @@ var router = express.Router();
 
 //importar el enrutador
 var quizController = require('../controllers/quiz_controller');
+var commentController = require('../controllers/comment_controller');
+
 var authorController= require ('../controllers/author_controller');
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -31,6 +33,10 @@ router.put('/quizes/:quizId(\\d+)',        quizController.update);
 
 
 router.delete('/quizes/:quizId(\\d+)',     quizController.destroy);
+
+//creamos las primitivas en el interfaz REST
+router.get('/quizes/:quizId(\\d+)/comments/new',            commentController.new);
+router.post('/quizes/:quizId(\\d+)/comments',              commentController.create);
 
 router.get('/author',   authorController.author);
 
