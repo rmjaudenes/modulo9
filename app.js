@@ -12,6 +12,8 @@ var partials = require ('express-partials');
 
 
 var methodOverride= require ('method-override');
+// se importa el paquete express-session instalado
+var session = require('express-session');
 
 var routes = require('./routes/index');
 //lo elimino poneindo comentarios var users = require('./routes/users');
@@ -35,9 +37,26 @@ app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use(cookieParser());
+app.use(cookieParser('Quiz 2015')); //añadir semilla 'Quiz 2015' para cifrar cookie
+app.use(session());//instalar MW session
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+
+//guardar path de la solicitud que llega en session.redir para depués del login
+// Helpers dinamicos:
+app.use(function(req, res, next) {
+
+  // guardar path en session.redir para despues de login
+  if (!req.path.match(/\/login|\/logout/)) {
+    req.session.redir = req.path;
+  }
+
+  // Hacer visible req.session en las vistas
+  res.locals.session = req.session;
+  next();
+});
 
 app.use('/', routes);
 //lo elimino poniendo comentarios app.use('/users', users);
