@@ -43,6 +43,42 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+//
+app.use(function(req, res, next){
+  
+    
+    // con javaScript metemos en dos variables tanto la fecha como la hora de esa fecha de acceso
+    // y en otra variable un valor que serán los milisengudos que han de pasar para la cancelación
+    var fecha = new Date ();
+    var hora = fecha.getTime ();
+    
+    var cancelacion = 120000;
+    /*
+    console.log (fecha);
+    console.log (hora);
+*/
+   // dos ifs anidados para realizar la acción de cancelar el usuario si sobrepasa el intervalo de tiempo
+    
+    if(req.session && req.session.login) {
+      
+    var intervalo = hora - req.session.login;
+        
+        if (cancelacion <= intervalo){
+         
+            delete req.session.user;
+           
+        }
+        
+    }
+   
+     req.session.login = hora;
+   
+    next();
+});
+
+
+
+
 
 //guardar path de la solicitud que llega en session.redir para depués del login
 // Helpers dinamicos:
